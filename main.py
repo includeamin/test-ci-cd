@@ -5,6 +5,9 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return "Hello this is jenkins piplining"
+@app.route("/amin")
+def amin():
+    return " Hier ist Amin Jamal , Hallo :)"
 
 
 if __name__ == "__main__":
