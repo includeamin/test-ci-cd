@@ -7,7 +7,7 @@ def hello():
     return "warum bist du hier? was machst du? sag mir!"
 @app.route("/amin")
 def amin():
-    return "Hallo liebe Sheyda :)"
+    return "check mail address"
 
 
 if __name__ == "__main__":
