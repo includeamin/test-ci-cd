@@ -7,6 +7,7 @@ def hello():
     return "warum bist du hier? was machst du? sag mir!"
 @app.route("/amin")
 def amin():
+    ;
     return "check mail "
 
 
