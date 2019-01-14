@@ -7,7 +7,7 @@ def hello():
     return "testing swarm mode"
 @app.route("/amin")
 def amin():
-    return "check mail "
+    return "check mail"
 
 
 if __name__ == "__main__":
