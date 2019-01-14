@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "warum bist du hier? was machst du? sag mir!"
+    return "testing swarm mode"
 @app.route("/amin")
 def amin():
     return "check mail "

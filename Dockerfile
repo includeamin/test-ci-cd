@@ -1,19 +1,21 @@
 FROM ubuntu:18.04
+MAINTAINER aminjamal <aminjamal10@gmail.com>
 
-EXPOSE 3005
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && \
-    apt-get install -y python3.6 python3.6-dev python3-pip
+RUN apt-get update
+RUN apt-get install -y python3.6 python3-pip
 
-# We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /app/accounting/requirements.txt
+# Setup flask application
+RUN mkdir -p /deploy/app
+COPY gunicorn_config.py /deploy/gunicorn_config.py
+COPY . /deploy/app
 
-WORKDIR /app/accounting
+RUN pip3 install -r /deploy/app/requirements.txt
+RUN pip3 install gunicorn
+WORKDIR /deploy/app
 
-RUN pip3 install -r requirements.txt
+EXPOSE 3007
 
-COPY . .
-
-
-
-CMD ["python3.6","-u","main.py"]
+# Start gunicorn
+CMD ["/usr/local/bin/gunicorn", "--config", "/deploy/gunicorn_config.py" , "app:app"]
