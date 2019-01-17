@@ -1,10 +1,9 @@
 version: '3'
 services: 
   MainServer:
-    image: test-ci-cd
+    image: test-ci-cd:dev
     deploy:
       replicas: 2
-      restart_policy:
-        condition: on-failure 
+      
     ports:
       - 3007:3007
