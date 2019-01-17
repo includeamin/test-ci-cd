@@ -2,7 +2,7 @@ from flask import Flask ,request
 from flask_prometheus import monitor 
 
 app = Flask(__name__)
-monitor(app, port=3009)
+
 @app.route("/")
 def hello():
     return "testing swarm mode"
@@ -13,3 +13,4 @@ def amin():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=3007)
+
