@@ -1,11 +1,15 @@
 from flask import Flask ,request
 from flask_prometheus import monitor 
+import uuid
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "testing swarm mode"
+    hostname = os.uname()[1]
+    randomid = uuid.uuid4()
+    return 'Container Hostname: ' + hostname + ' , ' + 'UUID: ' + str(randomid) + '\n'
 @app.route("/amin")
 def amin():
     return "check mail"
