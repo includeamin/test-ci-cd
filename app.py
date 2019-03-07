@@ -57,7 +57,6 @@ def upload_image():
 @app.route("/download/<filename>")
 def download(filename):
     try:
-        print(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         return send_file(os.path.join(app.config["UPLOAD_FOLDER"], filename))
 
     except Exception as ex:
