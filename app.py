@@ -29,7 +29,7 @@ def body():
     return jsonify(request.form)
 @app.route("/header")
 def header():
-    return jsonify(json.dumps(request.headers))
+    return jsonify({"State":True,"Description":request.headers["Token"]})
 @app.route("/jsonbody")
 def json_body():
     return jsonify(request.json)
