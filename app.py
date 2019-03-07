@@ -40,16 +40,14 @@ def upload_image():
         if request.method == 'POST':
             # check if the post request has the file part
             if 'file' not in request.files:
-                flash('No file part')
-                return redirect(request.url)
+                return "FileNotFound"
             file = request.files['file']
             # if user does not select file, browser also
             # submit an empty part without filename
             if file.filename == '':
-                flash('No selected file')
-                return Exception("FileNotFound")
+                return "FileNotFound"
             if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
+                filename = file.filename
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return jsonify({"State":True,"Description":filename})
         return jsonify((os.listdir(app.config["UPLOAD_FOLDER"])))
