@@ -4,6 +4,7 @@ import os
 import json
 from flask import jsonify
 from werkzeug.utils import secure_filename
+from flask import logging
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -57,8 +58,8 @@ def upload_image():
 @app.route("/download/<filename>")
 def download(filename):
     try:
+        #return send_from_directory(os.path.join(app.config["UPLOAD_FOLDER"], filename),filename)
         return send_file(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-
     except Exception as ex:
         return jsonify({"State":False,"Description":ex.args})
 
