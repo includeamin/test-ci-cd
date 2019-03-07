@@ -26,7 +26,7 @@ def amin():
     return jsonify({"State":True,"Description":"GET"})
 @app.route("/formbody" ,methods=["POST"])
 def body():
-    return request.form["Token"]
+    return jsonify(request.form)
 @app.route("/header")
 def header():
     return request.headers["Token"]
