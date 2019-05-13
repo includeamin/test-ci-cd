@@ -31,7 +31,7 @@ def body():
 @app.route("/header")
 def header():
     return jsonify({"State":True,"Description":request.headers["Token"]})
-@app.route("/jsonbody")
+@app.route("/jsonbody",methods=["POST","GET"])
 def json_body():
     return jsonify(request.json)
 
